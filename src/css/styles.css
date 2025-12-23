@@ -251,7 +251,7 @@ h1, h2, h3, .logo {
 }
 
 .section__title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.0rem, 6vw, 4.5rem);
   line-height: 1;
   margin-bottom: 30px;
 }
