@@ -1,1 +1,437 @@
-1
+/* Project: Aiv-Framz.blog - Инновации на пальцах
+   Style: Anti-design / Neo-brutalism
+*/
+
+/* --- 1. Глобальные переменные и обнуление --- */
+:root {
+  --color-bg: #FFDAB9; /* Peach (Персиковый) */
+  --color-text: #1A1A1A; /* Graphite */
+  --color-accent: #5D3FD3; /* Electric Violet */
+  --color-white: #FFFFFF;
+  --color-mint: #B2D8D8;
+
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+
+  --border-width: 3px;
+  --brutal-shadow: 10px 10px 0px var(--color-text);
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: initial; /* Для работы Lenis.js */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(1); /* Стилизация под Anti-design */
+  transition: var(--transition);
+}
+
+img:hover {
+  filter: grayscale(0);
+}
+
+/* --- 2. Типографика и Кнопки --- */
+h1, h2, h3, .logo {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 32px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: var(--border-width) solid var(--color-text);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  text-decoration: none;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 6px 6px 0 var(--color-text);
+}
+
+.btn--primary:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--color-text);
+  background-color: var(--color-white);
+  color: var(--color-accent);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.btn--full { width: 100%; }
+
+.btn--desktop-only {
+  display: inline-flex;
+}
+
+@media (max-width: 992px) {
+  .btn--desktop-only { display: none; }
+}
+
+/* --- 3. Хедер и Навигация --- */
+.header {
+  padding: 20px 0;
+  background: var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-text);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+
+.nav__list {
+  display: flex;
+  gap: 40px;
+}
+
+.nav__link {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.nav__link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Бургер меню */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.burger__line {
+  width: 30px;
+  height: 4px;
+  background: var(--color-text);
+  transition: var(--transition);
+}
+
+@media (max-width: 992px) {
+  .nav { display: none; }
+  .burger { display: flex; }
+}
+
+/* Мобильное меню (Overlay) */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-menu--active {
+  transform: translateX(0);
+}
+
+.mobile-menu__list {
+  text-align: center;
+  list-style: none;
+}
+
+.mobile-menu__link {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+/* --- 4. Hero Секция --- */
+.hero {
+  padding: 100px 0;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero__title {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 0.85;
+  margin-bottom: 40px;
+  letter-spacing: -3px;
+  word-break: break-word;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin-bottom: 50px;
+}
+
+.hero__btns {
+  display: flex;
+  gap: 20px;
+}
+
+/* --- 5. Основные секции --- */
+.section {
+  padding: 120px 0;
+  border-bottom: var(--border-width) solid var(--color-text);
+}
+
+.section--alt { background-color: var(--color-mint); }
+.section--dark {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.section__title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.feature-list {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* Карточки преимуществ */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.benefit-card {
+  padding: 50px;
+  border: var(--border-width) solid var(--color-text);
+  background: var(--color-white);
+  transition: var(--transition);
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--brutal-shadow);
+}
+
+.benefit-card__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 25px;
+  color: var(--color-accent);
+}
+
+/* --- 6. Контакты и Форма --- */
+.contact-card {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  border: var(--border-width) solid var(--color-text);
+  background: var(--color-white);
+  box-shadow: 20px 20px 0px var(--color-text);
+}
+
+.contact-card__info {
+  padding: 60px;
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.contact-form {
+  padding: 60px;
+}
+
+.form-group { margin-bottom: 25px; }
+
+.form-group input {
+  width: 100%;
+  padding: 18px;
+  border: var(--border-width) solid var(--color-text);
+  background: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.captcha-box label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* --- 7. Футер --- */
+.footer {
+  padding: 100px 0 50px;
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 60px;
+}
+
+.footer__title {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  color: var(--color-accent);
+}
+
+.footer__link {
+  display: block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+  transform: translateX(5px);
+}
+
+.footer__list--contacts li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* --- 8. Cookie Popup --- */
+.cookie-popup {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-text);
+  padding: 30px;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transform: translateY(200%);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cookie-popup--show { transform: translateY(0); }
+
+/* --- 9. Юридические страницы --- */
+.pages {
+  padding: 100px 0;
+  background: var(--color-bg);
+}
+
+.pages h1 {
+  font-size: 4rem;
+  margin-bottom: 50px;
+  line-height: 0.9;
+}
+
+.pages h2 {
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+.pages p, .pages li {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+/* --- 10. Адаптив --- */
+@media (max-width: 992px) {
+  .grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-card { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .hero__title { letter-spacing: -1px; }
+  .hero__btns { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+  .footer__grid { grid-template-columns: 1fr; }
+  .cookie-popup { flex-direction: column; text-align: center; bottom: 10px; left: 10px; right: 10px; }
+  .pages h1 { font-size: 2.5rem; }
+}
